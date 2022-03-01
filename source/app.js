@@ -5,6 +5,7 @@ const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
 const app = express()
+const port = process.env.PORT || 3000
 
 //Define Paths for Express config
 const viewsPath = path.join(__dirname, '../templates/views')
@@ -64,20 +65,6 @@ app.get('/weather', (req, res)=>{
     })
 })
 
-// app.get('/products', (req, res)=>{
-//
-//     if(!req.query.search){
-//         return res.send({
-//             error:'You must provide a search term'
-//         })
-//     }
-//
-//
-//     res.send({
-//         products:[]
-//     })
-// })
-
 app.get('/help/*', (req, res)=>{
     res.render('404',{
         title: 'Error',
@@ -94,6 +81,7 @@ app.get('*', (req, res)=>{
     })
 })
 
-app.listen(3000, ()=>{
-    console.log('Surfs up! @ 3000')
+app.listen(port, ()=>{
+    console.log('Surfs up! @ ' + port)
 })
+
